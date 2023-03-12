@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Button from '@mui/material/Button';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React gfg
+         <div className='text-blue-800'> Learn React gfg</div>
+         <Button variant="contained">hello</Button>
         </a>
       </header>
     </div>
