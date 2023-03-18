@@ -10,7 +10,7 @@ export default function Navbar() {
         <div>
           <div className="flex ml-4 items-center justify-between py-3 md:py-5 md:block">
             <a href="/">
-              <h2 className="flex gap-1 text- font-bold md:ml-12">
+              <h2 className="flex gap-1 text-3xl font-bold md:ml-12">
                 {/* <img src={Logo} alt="" style={{ height: "2rem" }} /> */}
 
                 Binge <span className="text-[#5a0c97]">Party</span>
@@ -60,7 +60,7 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-4 text-sm font-medium md:flex md:space-x-6 md:space-y-0 px-5">
+            <ul className="items-center justify-center space-y-4 text-base font-medium md:flex md:space-x-6 md:space-y-0 px-5">
               <li className="text-gray-600 hover:text-blue-600 ">
                 <a href="#services">Book Now</a>
               </li>
