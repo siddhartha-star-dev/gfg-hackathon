@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  /* Created with https://www.css-gradient.com */
+  background: #FFFFFF;
+  background: -webkit-radial-gradient(bottom, #FFFFFF, #F9C8FF);
+  background: -moz-radial-gradient(bottom, #FFFFFF, #F9C8FF);
+  background: radial-gradient(to top, #FFFFFF, #F9C8FF);
+}
+
+.body {
+
+  background: #FFFFFF;
+  background: -webkit-radial-gradient(bottom, #FFFFFF, #F9C8FF);
+  background: -moz-radial-gradient(bottom, #FFFFFF, #F9C8FF);
+  background: radial-gradient(to top, #FFFFFF, #F9C8FF);
 }
 
 .App-logo {
@@ -32,6 +45,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
