@@ -13,7 +13,7 @@ export default function Navbar() {
               <h2 className="flex gap-1 text-3xl font-bold md:ml-12">
                 {/* <img src={Logo} alt="" style={{ height: "2rem" }} /> */}
 
-                Binge <span className="text-[#5a0c97]">Party</span>
+                Map<span className="text-[#5a0c97]">My Health</span>
               </h2>
             </a>
             <div className="md:hidden">
