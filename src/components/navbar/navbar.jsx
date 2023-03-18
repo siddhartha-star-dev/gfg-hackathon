@@ -1,7 +1,7 @@
 // import Logo from "../assets/Group 82.png";
 import { useState } from "react";
 
-export default function Navigation() {
+export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
 
   return (

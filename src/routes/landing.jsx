@@ -1,9 +1,10 @@
-import Navigation from "../components/navbar/navbar";
+import Navbar from "../components/navbar/navbar";
 
 const Landing = ()=>{
     return(
         <>
-        <Navigation/>
+        <Navbar/>
+
         </>
     )
 }
