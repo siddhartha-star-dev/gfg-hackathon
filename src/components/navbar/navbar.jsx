@@ -10,7 +10,7 @@ export default function Navbar() {
         <div>
           <div className="flex ml-4 items-center justify-between py-3 md:py-5 md:block">
             <a href="/">
-              <h2 className="flex gap-1 text-2xl font-bold md:ml-12">
+              <h2 className="flex gap-1 text- font-bold md:ml-12">
                 {/* <img src={Logo} alt="" style={{ height: "2rem" }} /> */}
 
                 Binge <span className="text-[#5a0c97]">Party</span>
