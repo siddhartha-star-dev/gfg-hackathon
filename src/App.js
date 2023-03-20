@@ -12,8 +12,8 @@ const  App=()=> {
     <Navbar/>
     <Routes>
       <Route path='/' element={<Landing/>}/>
-      <Route path='/signin' element={<SignIn/>}/>
-      <Route path='/signup' element={<SignUp/>}/>
+      <Route exact path='/signin' element={<SignIn/>}/>
+      <Route exact path='/signup' element={<SignUp/>}/>
     </Routes>
     </>
   );

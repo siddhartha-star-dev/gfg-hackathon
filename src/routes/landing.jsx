@@ -1,5 +1,6 @@
 import Typewriter from "../components/typewriter/Typewriter";
 import Img1 from "../assets/2203_w037_n003_236a_p1_236-removebg-preview.png";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -34,24 +35,27 @@ const Landing = () => {
               color={"#374151"}
             />
           </div>
-          <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-5 py-2 mt-12 border-gray-400 hover:border-gray-800 hidden  md:flex">
+          <Link to='/signin'>
+          <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-5 py-2 mt-12 border-gray-400 hover:border-gray-800 hidden  md:flex" >
             <span className="mr-2">
               <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
             </span>{" "}
             Sign In Now
           </button>
+          </Link>
         </div>
         <div className="flex flex-col items-center">
           <div>
             <img src={Img1} alt="" className="mt-10 md:mt-14" />
           </div>
+          <Link to='/signin'>
           <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-7 py-2 mt-16 border-gray-400 hover:border-gray-800  md:hidden flex gap-2">
             <span>
               <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
             </span>{" "}
             Sign In Now
-          </button>
-        </div>
+          </button></Link>     
+             </div>
       </div>
     </>
   );
