@@ -1,19 +1,30 @@
 // import Logo from "../assets/Group 82.png";
 import { useState } from "react";
+import './navbar.css'
 
-export default function Navbar() {
+export default function Navigation() {
   const [navbar, setNavbar] = useState(false);
+  const [nav, setNav] = useState(false);
 
+  const changeBackground = ()=>{
+    if(window.scrollY >=25){
+      setNav(true)
+    }else{
+      setNav(false)
+    }
+  }
+
+  window.addEventListener('scroll', changeBackground)
   return (
-    <nav className="w-full bg-transparent fixed top-0">
+    <nav className={nav? 'navbar active':'navbar'}>
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex ml-4 items-center justify-between py-3 md:py-5 md:block">
             <a href="/">
-              <h2 className="flex gap-1 text-3xl font-bold md:ml-12">
+              <h2 className="flex gap-1 text-2xl font-bold">
                 {/* <img src={Logo} alt="" style={{ height: "2rem" }} /> */}
 
-                Map<span className="text-[#5a0c97]">My Health</span>
+                MAP<span className="text-[#5a0c97] ml-1">MY HEALTH</span>
               </h2>
             </a>
             <div className="md:hidden">
@@ -60,18 +71,18 @@ export default function Navbar() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-4 text-base font-medium md:flex md:space-x-6 md:space-y-0 px-5">
-              <li className="text-gray-600 hover:text-blue-600 ">
+            <ul className="items-center justify-center space-y-4 text-sm font-medium md:flex md:space-x-6 md:space-y-0 px-5">
+              <li className="text-gray-700 hover:text-blue-600 ">
                 <a href="#services">Book Now</a>
               </li>
               
-              <li className="text-gray-600 hover:text-blue-600 ">
+              <li className="text-gray-700 hover:text-blue-600 ">
                 <a href="#contacts">About Us</a>
               </li>
-              <li className="text-gray-600 hover:text-blue-600 ">
+              <li className="text-gray-700 hover:text-blue-600 ">
                 <a href="#download">Terms & Conditions</a>
               </li>
-              <li className="text-gray-600 hover:text-blue-600 ">
+              <li className="text-gray-700 hover:text-blue-600 ">
                 <a href="#contacts">Refund Policy</a>
               </li>
             </ul>

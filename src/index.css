@@ -4,9 +4,7 @@
 
 
 
-html,body {
+/* html,body {
 
-    /* background: #FFFFFF; */
-    background: rgb(255,255,255);
-background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(244,210,255,1) 100%);
-  }
+  background-image: linear-gradient(to bottom, #f3d0f9, #f6d8fa, #f9e1fc, #fce9fd, #fef2ff);
+  } */

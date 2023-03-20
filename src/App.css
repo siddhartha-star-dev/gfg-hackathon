@@ -4,10 +4,12 @@
   
 }
 
-body {
+/* body { */
 
   /* background: #FFFFFF; */
-  background: -webkit-radial-gradient(bottom, #FFFFFF, #e9a8f1);
-  background: -moz-radial-gradient(bottom, #FFFFFF, #e767f8);
-  background: radial-gradient(to top, #FFFFFF, #c538d8);
-}
+  /* min-height: 100%; */
+  /* background-image: linear-gradient(to bottom, #f3d0f9, #f6d8fa, #f9e1fc, #fce9fd, #fef2ff); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  /* background: no-repeat; */
+/* } */

@@ -1,0 +1,13 @@
+
+.navbar{
+  position: fixed;
+  top:0px;
+  z-index: 40;
+  width: 100%;
+  background: transparent;
+}
+
+.active{
+  background-color: #e8dbf983;
+  backdrop-filter: blur(7px);
+}
