@@ -12,39 +12,14 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
-import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 export default function Previousinfo() {
   return (
-    <Paper elevation={10} className='mt-32 w-1/2 mx-auto p-8'>
-      <div className='mb-10  text-3xl font-semibold'>
+    <Paper elevation={10} className='mt-28 w-1/2 mx-auto py-8 px-12'>
+      <div className='mb-8  text-3xl font-semibold'>
         Patient Previous Record
       </div>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="firstName"
-            name="firstName"
-            label="First name"
-            fullWidth
-            autoComplete="given-name"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="lastName"
-            name="lastName"
-            label="Last name"
-            fullWidth
-            autoComplete="family-name"
-            variant="standard"
-          />
-        </Grid>
         <Grid item xs={12}>
           <TextField
             required
@@ -57,15 +32,15 @@ export default function Previousinfo() {
           />
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-            <InputLabel id="demo-simple-select-standard-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-standard-label">Gender</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
               // value={age}
               // onChange={handleChange}
-              label="Age"
+              label="Gender"
             >
               {/* <MenuItem value="">
             <em>None</em>
@@ -77,23 +52,21 @@ export default function Previousinfo() {
           </FormControl>
         </Grid>
         
-        <div className='mt-10 '>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker />
+        <Grid item xs={12} sm={4} className="-ml-3">
+        <LocalizationProvider dateAdapter={AdapterDayjs} className="mx-auto">
+        <DatePicker
+    label="Date of Birth"
+    variant="standard"
+    className="mx-auto"
+    // value={value}
+    // onChange={(newValue) => {
+    //   setValue(newValue);
+    // }}
+    // renderInput={(params) => <TextField {...params} />}
+  />
         </LocalizationProvider>
-       </div>
-       <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="category"
-            name="category"
-            label="Category"
-            fullWidth
-            autoComplete="shipping postal-code"
-            variant="standard"
-          />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <TextField
             id="bloodGroup"
             name="bloodGroup"
@@ -102,6 +75,8 @@ export default function Previousinfo() {
             variant="standard"
           />
         </Grid>
+       
+        
         <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -125,13 +100,29 @@ export default function Previousinfo() {
           />
         </Grid>
 
-        <Grid item xs={12}>
-        <div className='mt-10 ml-10  '>
+        <Grid item xs={12} sm={6}>
+        
         
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker />
+          <DatePicker 
+          label="Date of visit"
+          renderInput={(params) => (
+            <TextField {...params} helperText="hi" />
+          )}
+          />
         </LocalizationProvider>
-       </div>
+       
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            required
+            id="category"
+            name="category"
+            label="Category"
+            fullWidth
+            autoComplete="shipping postal-code"
+            variant="standard"
+          />
         </Grid>
        
       </Grid>
