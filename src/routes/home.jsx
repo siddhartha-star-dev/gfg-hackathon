@@ -8,6 +8,12 @@ const Home=()=>{
                 Previous Information
             </button>
         </Link>
+        <Link to='/doctorform'>
+            <button className="mt-20">
+               Doctor Form
+            </button>
+        </Link>
+
         </>
         
 

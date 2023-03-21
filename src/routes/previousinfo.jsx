@@ -53,7 +53,7 @@ export default function Previousinfo() {
         </Grid>
         
         <Grid item xs={12} sm={4} className="-ml-3">
-        <LocalizationProvider dateAdapter={AdapterDayjs} className="mx-auto">
+        {/* <LocalizationProvider dateAdapter={AdapterDayjs} className="mx-auto"> */}
         <DatePicker
     label="Date of Birth"
     variant="standard"
@@ -64,7 +64,7 @@ export default function Previousinfo() {
     // }}
     // renderInput={(params) => <TextField {...params} />}
   />
-        </LocalizationProvider>
+        {/* </LocalizationProvider> */}
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
@@ -106,9 +106,6 @@ export default function Previousinfo() {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker 
           label="Date of visit"
-          renderInput={(params) => (
-            <TextField {...params} helperText="hi" />
-          )}
           />
         </LocalizationProvider>
        

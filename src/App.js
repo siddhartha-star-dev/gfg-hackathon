@@ -10,12 +10,13 @@ import Previousinfo from './routes/previousinfo.jsx';
 import Home from './routes/home';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import Doctorform from './routes/doctorform';
 const  App=()=> {
   return (
     <>
      <LocalizationProvider dateAdapter={AdapterDayjs}>
       
-    </LocalizationProvider>
+    
     <Navbar/>
     <Routes>
       <Route path='/' element={<Landing/>}/>
@@ -23,7 +24,9 @@ const  App=()=> {
       <Route exact path='/signup' element={<SignUp/>}/>
       <Route exact path='/previousinfo' element={<Previousinfo/>}/>
       <Route exact path='/home' element={<Home/>}/>
+      <Route exact path='/doctorform' element={<Doctorform/>}/>
     </Routes>
+    </LocalizationProvider>
     </>
   );
 }
