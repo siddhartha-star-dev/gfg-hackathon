@@ -14,6 +14,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function Previousinfo() {
+  
   return (
     <Paper elevation={10} className='mt-28 w-1/2 mx-auto py-8 px-12'>
       <div className='mb-8  text-3xl font-semibold'>

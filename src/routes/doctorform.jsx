@@ -16,7 +16,7 @@ import { Theme, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Chip from '@mui/material/Chip';
-
+import {useState} from 'react';
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -55,11 +55,24 @@ export default function Doctorform() {
       typeof value === 'string' ? value.split(',') : value,
     );
   };
-
+const [medicines,setMedicines] = useState([]);
+const [medicineInfo,setMedicineInfo] = useState({
+  medicine:"",
+  dosage:"",
+}); 
+const handlenputChange = (e)=>{
+  const {name,value} = e.target;
+setMedicineInfo({...medicineInfo,[name]:value});
+}
     return (
       <Paper elevation={10} className='mt-28 w-1/2 mx-auto py-8 px-12'>
         <div className='mb-8  text-3xl font-semibold'>
           Doctor Form
+        </div>
+        <div>
+        {
+          medicines.map((item,i)=>(<p><span>{item.medicine}</span> <span>{item.dosage}</span></p>))
+        }
         </div>
         <Grid container spacing={4}>
           <Grid item xs={12}>
@@ -76,26 +89,37 @@ export default function Doctorform() {
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              id="height"
-              name="height"
-              label="Height"
+              id="medicine"
+              name="medicine"
+              label="medicine"
               fullWidth
               autoComplete="shipping postal-code"
               variant="standard"
+              onChange={(e)=>{
+                handlenputChange(e);
+              }}
+              value={medicineInfo.medicine}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               required
-              id="weight"
-              name="weight"
-              label="Weight"
+              id="dosage"
+              name="dosage"
+              label="dosage"
               fullWidth
               autoComplete="shipping country"
               variant="standard"
+              onChange={(e)=>{
+                handlenputChange(e);
+              }}
+              value={medicineInfo.dosage}
             />
           </Grid>
-  
+        <button onClick={(e)=>{
+            setMedicines([...medicines,medicineInfo]);
+            setMedicineInfo({medicine:"",dosage:"",})
+        }}>+</button>
           <Grid item xs={12} sm={6}>
           
           
