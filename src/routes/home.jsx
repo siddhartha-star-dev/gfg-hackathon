@@ -1,23 +1,103 @@
 
 import { Link } from "react-router-dom";
-const Home=()=>{
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+const Home = () => {
+    const data = [
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        }
+        , {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        },
+        {
+            disease: "skjd",
+            category: "sdwed",
+            date: "12/2/23"
+
+        }
+    ];
     return (
         <>
-        <Link to='/previousinfo'>
-            <button className="mt-20">
-                Previous Information
-            </button>
-        </Link>
-        <Link to='/doctorform'>
-            <button className="mt-20">
-               Doctor Form
-            </button>
-        </Link>
+            <Stack className="mt-20 ml-10" spacing={4} direction="row">
+                <Link to='/previousinfo'>
+                    <Button variant="contained">previous info</Button>
+                </Link>
+                <Link to='/doctorform'>
+                    <Button variant="contained">doctor form</Button>
+                </Link>
+
+            </Stack>
+
+            <div className="flex flex-wrap gap-12 p-10 items-center justify-center">
+                {data.map((d, i) => {
+                    return (
+                        <div className="w-[20%]">
+                            <Paper className="p-6">
+                                <div><img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="" /></div>
+                                <div>Disease: {d.disease}</div>
+                                <div>category: {d.category} </div>
+                                <div>date:{d.date}</div>
+                            </Paper>
+                        </div>
+                    )
+                })}
+
+            </div>
 
         </>
-        
+
 
     );
 
 }
-export default Home
+export default Home;
