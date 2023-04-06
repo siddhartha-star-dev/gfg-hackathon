@@ -78,15 +78,17 @@ const Home = () => {
 
             </Stack>
 
-            <div className="flex flex-wrap gap-12 p-10 items-center justify-center">
+            <div className="flex flex-wrap gap-12 p-10 items-center justify-center text-gray-600">
                 {data.map((d, i) => {
                     return (
-                        <div className="w-[20%]">
-                            <Paper className="p-6">
-                                <div><img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="" /></div>
+                        <div key={i} className="w-[20rem]">
+                            <Paper className="" elevation={15}>
+                                <div><img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="" className="rounded-t-md" /></div>
+                                <div className="p-6">
                                 <div>Disease: {d.disease}</div>
                                 <div>category: {d.category} </div>
                                 <div>date:{d.date}</div>
+                                </div>
                             </Paper>
                         </div>
                     )

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,7 +15,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import { Link } from 'react-router-dom';
+const BACKEND_URL = 'http://localhost:8000/login';
 
 function Copyright(props) {
   return (
@@ -32,6 +36,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
+
     const [data, setData] = useState({
         email:"",
         password:""
@@ -41,17 +47,26 @@ export default function SignIn() {
         const {name, value} = e.target;
         setData({...data, [name]:value});
     }
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const data = new FormData(event.currentTarget);
-//     console.log({
-//       email: data.get('email'),
-//       password: data.get('password'),
-//     });
-//   };
+  const handleSubmit = async(event) => {
+    try{
+      event.preventDefault();
+    console.log(data);
+    const res = await axios.post(BACKEND_URL,data);
+    const userData = res.data;
+    localStorage['data'] = JSON.stringify(userData);
+    toast.success(res.data.message);
+    setTimeout(()=>{
+      navigate('/home');
+    },2000)
+    }
+    catch(error){
+      toast.error(error.response.data.message);
+    }
+  };
 
   return (
     <div className='mt-32'>
+      <ToastContainer />
         <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -105,7 +120,9 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-
+              onClick={(e)=>{
+                handleSubmit(e)
+              }}
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In

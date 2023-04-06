@@ -16,6 +16,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -38,10 +39,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  // const [message, setMessage] = useState("");
-  // const notify = (message) => {
-  //   toast(message);
-  // };
+  const navigate = useNavigate();
+  
   const BACKEND_URL = "http://localhost:8000/register";
   const [data, setData] = useState({
     email: "",
@@ -56,13 +55,12 @@ export default function SignUp() {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      // const data = new FormData(event.currentTarget);
-      // console.log({
-      //   email: data.get("email"),
-      //   password: data.get("password"),
-      // });
       const res = await axios.post(BACKEND_URL, data);
+      localStorage['data'] = JSON.stringify(data);
       toast.success(res.data.message);
+      setTimeout(()=>{
+        navigate('/home');
+      },2000)
     } catch (error) {
       toast.error(error.response.data.message);
     }
