@@ -5,18 +5,16 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Theme, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 import Chip from '@mui/material/Chip';
 import {useState} from 'react';
+
+
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -44,22 +42,23 @@ function getStyles(name, personName ,theme) {
 }
 export default function Doctorform() {
     const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+    const [data, setData] = useState({
+      name_of_doctor:'',
+      category:'',
+      medicine:[]
+    })
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+      const {name, value} = event.target;
+    setData({...data, [name]:value});
   };
-const [medicines,setMedicines] = useState([]);
+
+// const [medicines,setMedicines] = useState([]);
 const [medicineInfo,setMedicineInfo] = useState({
   medicine:"",
   dosage:"",
-}); 
+});
+
 const handlenputChange = (e)=>{
   const {name,value} = e.target;
 setMedicineInfo({...medicineInfo,[name]:value});
@@ -69,24 +68,37 @@ setMedicineInfo({...medicineInfo,[name]:value});
         <div className='mb-8  text-3xl font-semibold'>
           Doctor Form
         </div>
-        <div>
-        {
-          medicines.map((item,i)=>(<p><span>{item.medicine}</span> <span>{item.dosage}</span></p>))
-        }
-        </div>
+        
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <TextField
               required
               id="name_of_doctor"
               name="name_of_doctor"
               label="Name of doctor"
+              onChange={(e)=>{
+                handleChange(e)
+              }}
               fullWidth
               autoComplete="shipping address-line1"
               variant="standard"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
+            <TextField
+              required
+              id="category"
+              name="category"
+              label="Category"
+              fullWidth
+              autoComplete="shipping postal-code"
+              variant="standard"
+              onChange={(e)=>{
+                handleChange(e)
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} sm={4}>
             <TextField
               required
               id="medicine"
@@ -101,7 +113,7 @@ setMedicineInfo({...medicineInfo,[name]:value});
               value={medicineInfo.medicine}
             />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={4}>
             <TextField
               required
               id="dosage"
@@ -116,31 +128,38 @@ setMedicineInfo({...medicineInfo,[name]:value});
               value={medicineInfo.dosage}
             />
           </Grid>
-        <button onClick={(e)=>{
-            setMedicines([...medicines,medicineInfo]);
+          <Grid item xs={12} sm={4}>
+          <button className='mt-5 ml-4' onClick={(e)=>{
+            // setMedicines([...medicines,medicineInfo]);
+            setData({...data, medicine:[...data.medicine,medicineInfo]});
+            console.log({...data, medicine:[...data.medicine,medicineInfo]})
             setMedicineInfo({medicine:"",dosage:"",})
-        }}>+</button>
+        }}><AddBoxIcon/></button>
+        </Grid>
+          <div className='ml-12 mt-2'>
+        {
+          data.medicine.map((item,i)=>(<p>
+            <ul className='list-disc'>
+              <li className='mt-3'> 
+
+              <Chip label={item.medicine}/>
+              <Chip label={item.dosage} sx={{ml:2}}/>
+              
+                </li>
+        
+            </ul>
+           </p>))
+        }
+        </div>
+{/*         
           <Grid item xs={12} sm={6}>
-          
-          
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker 
             label="Date of visit"
             />
           </LocalizationProvider>
-         
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              required
-              id="category"
-              name="category"
-              label="Category"
-              fullWidth
-              autoComplete="shipping postal-code"
-              variant="standard"
-            />
-          </Grid>
+          </Grid> */}
+          
          
         </Grid>
       </Paper>

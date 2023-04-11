@@ -68,7 +68,6 @@ export default function Previousinfo() {
       e.preventDefault();
       // console.log(data);
       const email = JSON.parse(localStorage['data']).data.email;
-      
       const res = await axios.post(BACKEND_URL,{...data,email:email});
       // console.log({...data,email:email});
     }}>SUBMIT</Button>
