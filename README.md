@@ -21,7 +21,8 @@ Our web application features a database system that doctors can use to enter det
 * Saumdra Mitra
 * Saumya Subhra Nandi
 * Erum Fatima
-* Siddhartha Gaur
+* Siddhartha Gaur  
+<br>
 In summary, our medical website aims to make medical record-keeping more accessible and streamlined for both doctors and patients. With our user-friendly platform and advanced database system, we hope to revolutionize the healthcare industry.
  
  
