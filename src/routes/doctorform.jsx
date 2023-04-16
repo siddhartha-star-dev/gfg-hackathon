@@ -134,29 +134,13 @@ export default function Doctorform() {
             value={medicineInfo.dosage}
           />
         </Grid>
-        <Grid item xs={12} sm={4}>
-          <TextField
-            required
-            id="diagnosis"
-            name="diagnosis"
-            label="diagnosis"
-            fullWidth
-            // autoComplete="shipping country"
-            variant="standard"
-            onChange={(e) => {
-              handleChange(e);
-            }}
-            value={data.diagnosis}
-          />
-        </Grid>
+       
         <Grid item xs={12} sm={4}>
           <button
             className="mt-5 ml-4"
             onClick={(e) => {
               e.preventDefault();
-              // setMedicines([...medicines,medicineInfo]);
               setData({ ...data, medicine: [...data.medicine, medicineInfo] });
-              // console.log({...data, medicine:[...data.medicine,medicineInfo]})
               setMedicineInfo({ medicine: "", dosage: "" });
             }}
           >
@@ -175,8 +159,23 @@ export default function Doctorform() {
             </p>
           ))}
         </div>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="diagnosis"
+            name="diagnosis"
+            label="diagnosis"
+            fullWidth
+            variant="standard"
+            onChange={(e) => {
+              handleChange(e);
+            }}
+            value={data.diagnosis}
+          />
+        </Grid>
       </Grid>
       <button
+      className="rounded-full text-gray-100 px-5 py-2 bg-[#5A0C97] drop-shadow-md mt-8 mb-5 "
         onClick={async (e) => {
           e.preventDefault();
           // console.log(JSON.parse(localStorage['data']).data._id);

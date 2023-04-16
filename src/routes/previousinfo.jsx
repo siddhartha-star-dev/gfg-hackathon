@@ -31,8 +31,8 @@ export default function Previousinfo() {
   return (
     <>
     <ToastContainer />
-    <Paper elevation={10} className='mt-28 w-1/2 mx-auto py-8 px-12'>
-      <div className='mb-8  text-3xl font-semibold'>
+    <Paper elevation={10} className='mt-28 w-[40%] mx-auto py-8 px-8'>
+      <div className='mb-8  text-3xl font-semibold flex justify-center'>
         Patient Previous Record
       </div>
       <Grid container spacing={4}>
@@ -73,14 +73,14 @@ export default function Previousinfo() {
           </Grid>
         </Grid>
         <Grid>
-    <Button variant='contained' sx={{marginTop:'10px', marginX:'auto'}} onClick={async(e)=>{
+    <button className='rounded-full text-gray-100 px-5 py-2 bg-[#5A0C97] drop-shadow-md mt-8' onClick={async(e)=>{
       e.preventDefault();
       // console.log(data);
       const email = JSON.parse(localStorage['data']).data.email;
       const res = await axios.post(BACKEND_URL,{...data,email:email});
       toast.success(res.data.message);
       // console.log({...data,email:email});
-    }}>SUBMIT</Button>
+    }}>SUBMIT</button>
       </Grid>
     </Paper>
    

@@ -56,22 +56,23 @@ const Home = () => {
             report.save('report.pdf');
         });
     }
+   
     return (
         <>
 
-            <Stack className="mt-20 ml-10" spacing={4} direction="row">
+            <Stack className="mt-20 ml-14" spacing={4} direction="row">
                 <Link to='/previousinfo'>
                     <Button variant="contained">previous info</Button>
                 </Link>
                 <Link to='/doctorform'>
                     <Button variant="contained">doctor form</Button>
                 </Link>
-                <Button onClick={(e)=>{
+                <Button variant="contained" onClick={(e)=>{
                     e.preventDefault();
                     setSearchTerm("");
                     setSearchField("");
                     setVisible(false)}}>New records</Button>
-                <Button onClick={(e)=>{
+                <Button variant="contained" onClick={(e)=>{
                     setSearchTerm("")
                     setSearchField("");
                     e.preventDefault();
@@ -84,7 +85,7 @@ const Home = () => {
                     console.log(res)
 
                 }}>Generate OTP</Button>
-                {otp&& <div>{otp}
+                {otp&& <div><span className="mx-3">{otp}</span>
                 <Button variant="contained" onClick={async(e)=>{
                     const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/destroyotp`,{userid:(JSON.parse(user).data._id)});
                     console.log(res);
@@ -98,17 +99,18 @@ const Home = () => {
             <div className="flex flex-wrap gap-12 p-10 items-center justify-center text-gray-600">
          
                 {filteredmonster.map((d, i) => {
+                     let date =(d.date);
                     return (
                         <div key={i} className="w-[20rem]">
                             <Paper className="" elevation={15}>
                                 <div><img src={d.image_url} alt="" className="rounded-t-md" /></div>
                                 <div className="p-6">
                                 {/* <div>Disease: {d.disease}</div> */}
-                                <div>category: {d.category} </div>
-                                <div>date:{JSON.stringify(d.date)}</div>
+                                <div className="flex gap-3"><div className="text-lg font-medium">Category:</div> {d.category} </div>
+                                <div className="flex gap-3 mt-2"><div className="text-lg font-medium">Date:</div>{date.day}/{date.month}/{date.year}</div>
                                 </div>
                                 <Link to={`/report/${d._id}`} state={{d}}>
-                  <button className="rounded-full text-gray-100 px-5 py-2 bg-[#5A0C97] drop-shadow-md">
+                  <button className="rounded-full text-gray-100 px-5 py-2 bg-[#5A0C97] drop-shadow-md text-sm mx-6 mb-5">
                     Read more
                   </button></Link>
 

@@ -75,25 +75,16 @@ export default function Navigation() {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-4 text-sm font-medium md:flex md:space-x-6 md:space-y-0 px-5">
-              <li className="text-gray-700 hover:text-blue-600 ">
-                <a href="#">Book Now</a>
-              </li>
-              
-              <li className="text-gray-700 hover:text-blue-600 ">
-                <a href="#contacts">About Us</a>
-              </li>
-              <li className="text-gray-700 hover:text-blue-600 ">
-                <a href="#download">Terms & Conditions</a>
-              </li>
+            <ul className="items-center justify-center space-y-4 text-sm font-medium md:flex md:space-x-9 md:space-y-0 px-5">
+             
               {user && <li className="text-gray-700 hover:text-blue-600 ">
-              <a href="/home"><AccountCircleIcon/></a>
+              <a href="/home"> <AccountCircleIcon/> Profile</a>
               </li>}
               {user && <li className="text-gray-700 hover:text-blue-600 ">
               <a onClick={()=>{
                 localStorage.clear();
                 navigate('/');
-              }}><LogoutIcon/></a>
+              }}><LogoutIcon/> Logout </a>
               </li>}
             </ul>
           </div>

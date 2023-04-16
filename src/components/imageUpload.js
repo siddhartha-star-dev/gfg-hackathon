@@ -65,8 +65,8 @@ export default function ImageUploader({ defaultImage,setData,data }) {
         />
       ) : (
         <div
-          className="bg-gray-200 border-4 border-dashed border-gray-400 rounded-lg"
-          style={{ height: 400, width: 600 }}
+          className="bg-gray-300  shadow-lg mx-auto mt-5 rounded-lg"
+          style={{ height: 300, width: 500 }}
         >
           <form className="flex justify-center items-center h-full">
             {progress === 0 ? (
