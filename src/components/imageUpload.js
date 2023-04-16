@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 const cloudname = 'dq95ueewn'
 const preset = "preset1"
-const backendurl = "http://34.131.196.228/api/uploadimage";
+const backendurl = `${process.env.REACT_APP_BACKEND_URL}/uploadimage`;
 export default function ImageUploader({ defaultImage,setData,data }) {
   const fileSelect = useRef(null);
   const [image, setImage] = useState(defaultImage);

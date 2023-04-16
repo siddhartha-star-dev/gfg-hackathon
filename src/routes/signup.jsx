@@ -41,7 +41,7 @@ const theme = createTheme();
 export default function SignUp() {
   const navigate = useNavigate();
 
-  const BACKEND_URL = "http://34.131.196.228/api/register";
+  const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}/register`;
   // const BACKEND_URL = "http://localhost:8000/register";
   const [data, setData] = useState({
     email: "",

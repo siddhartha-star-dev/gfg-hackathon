@@ -29,7 +29,7 @@ const Home = () => {
         }
         const fun = async()=>{
             const userid = JSON.parse(user).data?._id;
-            const resp = await axios.post('http://localhost:8000/getpatientinfo',{userid});
+            const resp = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/getpatientinfo`,{userid});
             setPrev(resp.data.prev_records);
             setNewRecords(resp.data.new_records);
         }
@@ -78,7 +78,7 @@ const Home = () => {
                     setVisible(true)}}>Prev records</Button>
                 <Button variant="contained" onClick={async(e)=>{
                     e.preventDefault();
-                    const res = await axios.post('http://localhost:8000/generateOTP', {userid:(JSON.parse(user).data._id)});
+                    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/generateOTP`, {userid:(JSON.parse(user).data._id)});
                     setOtp(res.data.otp);
                     toast.success(res.data.message);
                     console.log(res)
@@ -86,7 +86,7 @@ const Home = () => {
                 }}>Generate OTP</Button>
                 {otp&& <div>{otp}
                 <Button variant="contained" onClick={async(e)=>{
-                    const res = await axios.post('http://localhost:8000/destroyotp',{userid:(JSON.parse(user).data._id)});
+                    const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/destroyotp`,{userid:(JSON.parse(user).data._id)});
                     console.log(res);
                     setOtp(null);
                 }}>Destroy OTP</Button>

@@ -18,7 +18,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import { Link } from 'react-router-dom';
-const BACKEND_URL = 'http://34.131.196.228/api/login';
+const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}/login`;
 
 function Copyright(props) {
   return (

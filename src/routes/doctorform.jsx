@@ -181,7 +181,7 @@ export default function Doctorform() {
           e.preventDefault();
           // console.log(JSON.parse(localStorage['data']).data._id);
           console.log(data);
-          const resp = await axios.post('http://localhost:8000/newuserinfo',data);
+          const resp = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/newuserinfo`,data);
           console.log(resp);
           alert(resp.data.message)
           if(resp.data.message==="Patient has destroyed otp")

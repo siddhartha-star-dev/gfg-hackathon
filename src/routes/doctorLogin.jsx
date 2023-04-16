@@ -9,7 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const BACKEND_URL = 'http://localhost:8000/verifyOTP';
+const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}/verifyOTP`;
 
 function Copyright(props) {
   return (

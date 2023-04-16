@@ -12,7 +12,7 @@ import axios from 'axios';
 import { SentimentDissatisfied } from '@mui/icons-material';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const BACKEND_URL = 'http://34.131.196.228/api/addImageToDB';
+const BACKEND_URL = `${process.env.REACT_APP_BACKEND_URL}/addImageToDB`;
 
 export default function Previousinfo() {
   const [data, setData] = useState({
@@ -71,22 +71,6 @@ export default function Previousinfo() {
               }}
             />
           </Grid>
-          <Button
-            variant="contained"
-            sx={{ marginTop: "10px", marginX: "auto" }}
-            onClick={async (e) => {
-              e.preventDefault();
-              // console.log(data);
-              const email = JSON.parse(localStorage["data"]).data.email;
-              const res = await axios.post(BACKEND_URL, {
-                ...data,
-                email: email,
-              });
-              // console.log({...data,email:email});
-            }}
-          >
-            SUBMIT
-          </Button>
         </Grid>
         <Grid>
     <Button variant='contained' sx={{marginTop:'10px', marginX:'auto'}} onClick={async(e)=>{
