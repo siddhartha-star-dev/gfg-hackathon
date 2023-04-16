@@ -7,11 +7,8 @@ When visiting a doctor, patients may feel nervous or anxious, which can make it 
 
 ## Solution
 Our web application  features a database system for doctors to enter patient information and generate prescriptions.
-
 The inclusion of a database system allows doctors to keep a detailed and organized record of their patients' medical history and treatment plans. This can be particularly useful for patients who have chronic conditions that require ongoing management, as it enables doctors to track progress over time and adjust treatment plans as necessary.
-
 Furthermore, the ability for patients to upload images of their medical files can make it easier for doctors to access important information that may have been recorded by other healthcare providers. This can help to ensure that patients receive more comprehensive and coordinated care.
-
 Overall, the prescription form and database system in your web application can streamline the process of providing care to patients, improve communication between healthcare providers, and ultimately result in better health outcomes for patients.
 
 ## Tech Stack
