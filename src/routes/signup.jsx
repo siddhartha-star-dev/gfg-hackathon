@@ -57,10 +57,10 @@ export default function SignUp() {
     try {
       event.preventDefault();
       const res = await axios.post(BACKEND_URL, data);
-      localStorage["data"] = JSON.stringify(data);
+      // localStorage["data"] = JSON.stringify(data);
       toast.success(res.data.message);
       setTimeout(() => {
-        navigate("/home");
+        navigate("/");
       }, 2000);
     } catch (error) {
       toast.error(error.response.data.message);
