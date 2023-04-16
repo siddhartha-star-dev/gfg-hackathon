@@ -10,6 +10,8 @@ import ImageUploader from '../components/imageUpload';
 import {useState} from 'react';
 import axios from 'axios';
 import { SentimentDissatisfied } from '@mui/icons-material';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const BACKEND_URL = 'http://localhost:8000/addImageToDB';
 
 export default function Previousinfo() {
@@ -28,6 +30,7 @@ export default function Previousinfo() {
 
   return (
     <>
+    <ToastContainer />
     <Paper elevation={10} className='mt-28 w-1/2 mx-auto py-8 px-12'>
       <div className='mb-8  text-3xl font-semibold'>
         Patient Previous Record
@@ -69,6 +72,7 @@ export default function Previousinfo() {
       // console.log(data);
       const email = JSON.parse(localStorage['data']).data.email;
       const res = await axios.post(BACKEND_URL,{...data,email:email});
+      toast.success(res.data.message);
       // console.log({...data,email:email});
     }}>SUBMIT</Button>
       </Grid>

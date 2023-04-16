@@ -11,6 +11,11 @@ import Home from './routes/home';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Doctorform from './routes/doctorform';
+import DoctorSignIn from './routes/doctorLogin';
+import PatientInfo from './routes/patientInfo';
+import Report from './routes/report';
+
+
 const  App=()=> {
   return (
     <>
@@ -25,6 +30,9 @@ const  App=()=> {
       <Route exact path='/previousinfo' element={<Previousinfo/>}/>
       <Route exact path='/home' element={<Home/>}/>
       <Route exact path='/doctorform' element={<Doctorform/>}/>
+      <Route exact path='/doctorlogin' element={<DoctorSignIn/>}/>
+      <Route exact path='/patientinfo' element={<PatientInfo/>}/>  
+      <Route path='/report/:id' element={<Report/>}/>  
     </Routes>
     </LocalizationProvider>
     </>

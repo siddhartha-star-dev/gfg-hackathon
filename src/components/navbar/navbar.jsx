@@ -1,11 +1,15 @@
 // import Logo from "../assets/Group 82.png";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { useState } from "react";
 import './navbar.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
+  const user = (localStorage['data'])?(JSON.parse(localStorage['data'])?.data):null;
   const [navbar, setNavbar] = useState(false);
   const [nav, setNav] = useState(false);
-
+  const navigate = useNavigate();
   const changeBackground = ()=>{
     if(window.scrollY >=25){
       setNav(true)
@@ -73,7 +77,7 @@ export default function Navigation() {
           >
             <ul className="items-center justify-center space-y-4 text-sm font-medium md:flex md:space-x-6 md:space-y-0 px-5">
               <li className="text-gray-700 hover:text-blue-600 ">
-                <a href="#services">Book Now</a>
+                <a href="#">Book Now</a>
               </li>
               
               <li className="text-gray-700 hover:text-blue-600 ">
@@ -82,9 +86,15 @@ export default function Navigation() {
               <li className="text-gray-700 hover:text-blue-600 ">
                 <a href="#download">Terms & Conditions</a>
               </li>
-              <li className="text-gray-700 hover:text-blue-600 ">
-                <a href="#contacts">Refund Policy</a>
-              </li>
+              {user && <li className="text-gray-700 hover:text-blue-600 ">
+              <a href="/home"><AccountCircleIcon/></a>
+              </li>}
+              {user && <li className="text-gray-700 hover:text-blue-600 ">
+              <a onClick={()=>{
+                localStorage.clear();
+                navigate('/');
+              }}><LogoutIcon/></a>
+              </li>}
             </ul>
           </div>
         </div>

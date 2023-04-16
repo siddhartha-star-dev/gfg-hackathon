@@ -1,73 +1,64 @@
-
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Searchbar from "../components/Searchbar";
+import JsPDF from 'jspdf';
+
+
 const Home = () => {
-    const data = [
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
 
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
 
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
+    const navigate = useNavigate();
+    const [otp, setOtp] = useState(null);
+    const [visible, setVisible] = useState(false);
+    const [searchstring, setSearchField] = useState("");
+    const user = localStorage['data'];
+    const [prev,setPrev] = useState([]);
+    const [newRecords,setNewRecords] = useState([]);
 
+    const [filteredmonster, setFilteredMonster] = useState(visible?prev:newRecords);
+    // const ref = useRef(null);
+    useEffect(()=>{
+        if(!user){
+            navigate('/');
         }
-        , {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
-        },
-        {
-            disease: "skjd",
-            category: "sdwed",
-            date: "12/2/23"
-
+        const fun = async()=>{
+            const userid = JSON.parse(user).data?._id;
+            const resp = await axios.post('http://localhost:8000/getpatientinfo',{userid});
+            setPrev(resp.data.prev_records);
+            setNewRecords(resp.data.new_records);
         }
-    ];
+        fun();
+    },[])
+    useEffect(() => {
+        const newfilteredRecords = (visible?prev:newRecords).filter((monster)=>{
+          return monster.category?.toLowerCase().includes(searchstring)
+          });
+        setFilteredMonster(newfilteredRecords)
+      }, [prev,searchstring,visible]);
+    
+      const onsearchchange = (event) => {
+        const searchfieldstring = event.target.value.toLowerCase();
+        setSearchTerm(event.target.value);
+        setSearchField(searchfieldstring);
+        console.log(prev);
+      };
+      const [searchTerm,setSearchTerm] = useState("");
+      const generatePDF = () => {
+
+        const report = new JsPDF('portrait','pt','a4');
+        report.html(document.querySelector('#report')).then(() => {
+            report.save('report.pdf');
+        });
+    }
     return (
         <>
+
             <Stack className="mt-20 ml-10" spacing={4} direction="row">
                 <Link to='/previousinfo'>
                     <Button variant="contained">previous info</Button>
@@ -75,25 +66,57 @@ const Home = () => {
                 <Link to='/doctorform'>
                     <Button variant="contained">doctor form</Button>
                 </Link>
+                <Button onClick={(e)=>{
+                    e.preventDefault();
+                    setSearchTerm("");
+                    setSearchField("");
+                    setVisible(false)}}>New records</Button>
+                <Button onClick={(e)=>{
+                    setSearchTerm("")
+                    setSearchField("");
+                    e.preventDefault();
+                    setVisible(true)}}>Prev records</Button>
+                <Button variant="contained" onClick={async(e)=>{
+                    e.preventDefault();
+                    const res = await axios.post('http://localhost:8000/generateOTP', {userid:(JSON.parse(user).data._id)});
+                    setOtp(res.data.otp);
+                    toast.success(res.data.message);
+                    console.log(res)
+
+                }}>Generate OTP</Button>
+                {otp&& <div>{otp}
+                <Button variant="contained" onClick={async(e)=>{
+                    const res = await axios.post('http://localhost:8000/destroyotp',{userid:(JSON.parse(user).data._id)});
+                    console.log(res);
+                    setOtp(null);
+                }}>Destroy OTP</Button>
+                </div>}
 
             </Stack>
-
+            <Searchbar searchTerm = {searchTerm} onChangeHandler={onsearchchange}/>
+            <ToastContainer autoClose={500} hideProgressBar={true} />
             <div className="flex flex-wrap gap-12 p-10 items-center justify-center text-gray-600">
-                {data.map((d, i) => {
+         
+                {filteredmonster.map((d, i) => {
                     return (
                         <div key={i} className="w-[20rem]">
                             <Paper className="" elevation={15}>
-                                <div><img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80" alt="" className="rounded-t-md" /></div>
+                                <div><img src={d.image_url} alt="" className="rounded-t-md" /></div>
                                 <div className="p-6">
-                                <div>Disease: {d.disease}</div>
+                                {/* <div>Disease: {d.disease}</div> */}
                                 <div>category: {d.category} </div>
-                                <div>date:{d.date}</div>
+                                <div>date:{JSON.stringify(d.date)}</div>
                                 </div>
+                                <Link to={`/report/${d._id}`} state={{d}}>
+                  <button className="rounded-full text-gray-100 px-5 py-2 bg-[#5A0C97] drop-shadow-md">
+                    Read more
+                  </button></Link>
+
                             </Paper>
+                            
                         </div>
                     )
                 })}
-
             </div>
 
         </>
@@ -103,3 +126,4 @@ const Home = () => {
 
 }
 export default Home;
+// "https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8&w=1000&q=80"
