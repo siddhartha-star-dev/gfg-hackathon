@@ -37,6 +37,6 @@ const  App=()=> {
     </LocalizationProvider>
     </>
   );
-}
+};
 
 export default App;

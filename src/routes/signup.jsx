@@ -40,8 +40,9 @@ const theme = createTheme();
 
 export default function SignUp() {
   const navigate = useNavigate();
-  
-  const BACKEND_URL = "http://localhost:8000/register";
+
+  const BACKEND_URL = "http://34.131.196.228/api/register";
+  // const BACKEND_URL = "http://localhost:8000/register";
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -56,11 +57,11 @@ export default function SignUp() {
     try {
       event.preventDefault();
       const res = await axios.post(BACKEND_URL, data);
-      localStorage['data'] = JSON.stringify(data);
+      localStorage["data"] = JSON.stringify(data);
       toast.success(res.data.message);
-      setTimeout(()=>{
-        navigate('/home');
-      },2000)
+      setTimeout(() => {
+        navigate("/home");
+      }, 2000);
     } catch (error) {
       toast.error(error.response.data.message);
     }
