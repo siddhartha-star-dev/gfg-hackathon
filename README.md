@@ -38,5 +38,8 @@ Overall, the prescription form and database system in your web application can s
 
 ## Google Cloud Platform Usage:
 
-1. Google Mailing Api
+1. Google Mailing Api:
    We have used the google cloud mailing api to send automated mails to users after they register.
+
+2. Compute Engine Google Api:
+   We have used AMD server instance N2D from Compute Engine Google Api to host our site's frontend and backend.
