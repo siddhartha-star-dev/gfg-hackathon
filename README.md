@@ -1,19 +1,20 @@
+# HOSTED AT:
+
+34.131.196.228
+
 # Map My Health
 
 ## Abstract
 
 A medical platform that allows doctors and patients to store and access medical records.
 
-
 ## Team Name
 
 #NO_INTERN
 
-
 ## Problem
 
 When visiting a doctor, patients may feel nervous or anxious, which can make it difficult for them to recall important details about their health history. Additionally, some patients may have multiple health conditions, which can make it challenging to remember all of the details of each diagnosis and treatment. Language barriers or cognitive impairments can also contribute to difficulty in communication between patients and doctors. In some cases, patients may not even be aware of all the health issues they have had in the past, especially if they have not been diagnosed or treated previously. All of these factors can make it challenging for patients to provide accurate and comprehensive information to their healthcare provider, which can potentially impact the quality of care they receive.
-
 
 ## Solution
 
@@ -23,8 +24,6 @@ When visiting a doctor, patients may feel nervous or anxious, which can make it 
 
 Overall, the prescription form and database system in your web application can streamline the process of providing care to patients, improve communication between healthcare providers, and ultimately result in better health outcomes for patients.
 
-
-
 ## Google Cloud Platform Usage:
 
 1. Google Mailing Api:
@@ -32,7 +31,6 @@ Overall, the prescription form and database system in your web application can s
 
 2. Compute Engine Google Api:
    We have used AMD server instance N2D from Compute Engine Google Api to host our site's frontend and backend.
-
 
 ## Tech Stack
 
@@ -42,7 +40,6 @@ Overall, the prescription form and database system in your web application can s
 - Node.js
 - MongoDB
 
-
 ## Team Members
 
 - Samudra Mitra
@@ -51,4 +48,3 @@ Overall, the prescription form and database system in your web application can s
 - Siddhartha Gaur  
   <br>
   In summary, our medical website aims to make medical record-keeping more accessible and streamlined for both doctors and patients. With our user-friendly platform and advanced database system, we hope to revolutionize the healthcare industry.
-
