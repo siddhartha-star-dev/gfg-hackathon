@@ -35,27 +35,53 @@ const Landing = () => {
               color={"#374151"}
             />
           </div>
-          <Link to='/signin'>
-          <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-5 py-2 mt-12 border-gray-400 hover:border-gray-800 hidden  md:flex" >
-            <span className="mr-2">
-              <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
-            </span>{" "}
-            Sign In Now
-          </button>
+          <Link to="/signin">
+            <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-5 py-2 mt-12 border-gray-400 hover:border-gray-800 hidden  md:flex">
+              <span className="mr-2">
+                <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
+              </span>{" "}
+              Sign In Now
+            </button>
           </Link>
+          <Link to="/doctorlogin">
+            <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-5 py-2 mt-12 border-gray-400 hover:border-gray-800 hidden  md:flex">
+              <span className="mr-2">
+                <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
+              </span>{" "}
+              Sign In As Doctor
+            </button>
+          </Link>
+          {/* <p>etsrdtfjgk</p>
+          <Link to="/doctorlogin">
+            <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-7 py-2 mt-16 border-gray-400 hover:border-gray-800  md:hidden flex gap-2">
+              <span>
+                <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
+              </span>{" "}
+              Sign In As Doctor
+            </button>
+          </Link> */}
         </div>
         <div className="flex flex-col items-center">
           <div>
             <img src={Img1} alt="" className="mt-10 md:mt-14" />
           </div>
-          <Link to='/signin'>
-          <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-7 py-2 mt-16 border-gray-400 hover:border-gray-800  md:hidden flex gap-2">
-            <span>
-              <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
-            </span>{" "}
-            Sign In Now
-          </button></Link>     
-             </div>
+          <Link to="/signin">
+            <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-7 py-2 mt-16 border-gray-400 hover:border-gray-800  md:hidden flex gap-2">
+              <span>
+                <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
+              </span>{" "}
+              Sign In Now
+            </button>
+          </Link>
+          <Link to="/doctorlogin">
+            <button className="text-xl text-gray-700 font-semibold rounded-[2rem] border-2 px-7 py-2 mt-16 border-gray-400 hover:border-gray-800  md:hidden flex gap-2">
+              <span>
+                <img src="https://img.icons8.com/material-outlined/24/null/import.png" />
+              </span>{" "}
+              Sign In As Doctor
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
